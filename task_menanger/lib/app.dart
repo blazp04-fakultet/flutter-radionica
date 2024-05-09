@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_menanger/task_page.dart';
 
 class Application extends StatelessWidget {
   const Application({super.key});
@@ -9,42 +10,14 @@ class Application extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color(0xFFD9E9E7),
             centerTitle: true,
-            backgroundColor: const Color.fromARGB(255, 9, 52, 87),
             title: Text(
-              "Blaz",
-              style: TextStyle(
-                color: Colors.white,
-              ),
+              "Task Menanger",
+              style: TextStyle(color: Color(0xFF6B7775)),
             ),
           ),
-          body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Ja sam Blaž",
-                  style: TextStyle(fontSize: 30),
-                ),
-                Text(
-                  "Kvesa♫",
-                  style: TextStyle(fontSize: 30),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    print("Klikno sam!");
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  child: Text("Klikni"),
-                )
-              ],
-            ),
-          ),
+          body: TaskListPage(),
         ),
       ),
     );
