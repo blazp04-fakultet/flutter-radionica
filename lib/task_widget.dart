@@ -4,7 +4,8 @@ import 'package:task_menanger/task_model.dart';
 class Task extends StatelessWidget {
   Task({
     required this.task,
-    required this.onPress,
+    required this.onCompleate,
+    required this.onDelete,
     super.key,
   }) {
     if (task.isActive) {
@@ -21,7 +22,8 @@ class Task extends StatelessWidget {
   }
 
   TaskModel task;
-  final VoidCallback onPress;
+  final VoidCallback onCompleate;
+  final VoidCallback onDelete;
 
   late Color primary;
   late Color primaryWhie;
@@ -72,7 +74,7 @@ class Task extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        onPress();
+                        onCompleate();
                       },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
@@ -90,7 +92,9 @@ class Task extends StatelessWidget {
                       width: 10,
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        onDelete();
+                      },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                           deleteButtonColor,

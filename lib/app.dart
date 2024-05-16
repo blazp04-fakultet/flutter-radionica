@@ -13,19 +13,40 @@ class Application extends StatelessWidget {
         ChangeNotifierProvider<TaskProvider>(create: (_) => TaskProvider()),
       ],
       child: MaterialApp(
-        home: SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: Color(0xFFD9E9E7),
-              centerTitle: true,
-              title: Text(
-                "Task Menanger",
-                style: TextStyle(color: Color(0xFF6B7775)),
-              ),
-            ),
-            body: TaskListPage(),
+        home: Page(),
+      ),
+    );
+  }
+}
+
+class Page extends StatelessWidget {
+  const Page({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final taskProvider = Provider.of<TaskProvider>(context);
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFFD9E9E7),
+          centerTitle: true,
+          title: Text(
+            "Task Menanger",
+            style: TextStyle(color: Color(0xFF6B7775)),
           ),
         ),
+        floatingActionButton: ElevatedButton(
+          onPressed: () => taskProvider.addTask(),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blue),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          child: Text("Add"),
+        ),
+        body: TaskListPage(),
       ),
     );
   }

@@ -25,4 +25,19 @@ class TaskProvider extends ChangeNotifier {
     zadatci[index].isActive = !zadatci[index].isActive;
     notifyListeners();
   }
+
+  void deleteTask(int index) {
+    zadatci.removeAt(index);
+    notifyListeners();
+  }
+
+  void addTask() {
+    final taskModel = TaskModel(
+      title: "Nadslov",
+      description: "Opis",
+      isActive: true,
+    );
+    zadatci.add(taskModel);
+    notifyListeners();
+  }
 }

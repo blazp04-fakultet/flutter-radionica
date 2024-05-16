@@ -20,7 +20,8 @@ class TaskListPage extends StatelessWidget {
         itemBuilder: (context, index) {
           return Task(
             task: taskProvider.zadatci[index],
-            onPress: () => taskProvider.markAsCompleate(index),
+            onCompleate: () => taskProvider.markAsCompleate(index),
+            onDelete: () => taskProvider.deleteTask(index),
           );
         },
       ),
